@@ -3,124 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- 👇👇👇 设置标签页图标为 HOY TV Logo 👇👇👇 -->
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/zh/thumb/f/f3/HOY_TV_Logo.svg">"
-
-
+    
+    <!-- 👇👇 诱饵标题：让朋友在标签页上看到这个 👇 -->
     <title>免费高速VPN节点，1000Mbps带宽，永不失效</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+    <!-- 👇👇👇 HOY TV Logo (已修复语法) 👇👇👇 -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/zh/thumb/f/f3/HOY_TV_Logo.svg/1920px-HOY_TV_Logo.svg.png" type="image/png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #050505; /* 深色背景 */
+            background-color: #050505;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
             overflow: hidden;
         }
-
-        .container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* 核心文字样式 */
+        .container { text-align: center; padding: 20px; }
+        
+        /* 核心发光文字 */
         h1 {
             font-size: 3.5rem;
             font-weight: 900;
             color: #fff;
-            /* 多重阴影实现发光效果 */
             text-shadow: 
-                0 0 10px #00e6e6,
-                0 0 20px #00e6e6,
-                0 0 40px #00e6e6,
-                0 0 80px #00e6e6,
-                0 0 120px #00e6e6;
-            animation: breathe 3s infinite ease-in-out;
+                0 0 10px #00e6e6, 0 0 20px #00e6e6,
+                0 0 40px #00e6e6, 0 0 80px #00e6e6;
+            animation: breathe 2s infinite ease-in-out;
             line-height: 1.4;
         }
 
-        /* 呼吸灯动画：让光晕忽明忽暗 */
         @keyframes breathe {
-            0%, 100% {
-                opacity: 1;
-                text-shadow: 
-                    0 0 10px #00e6e6,
-                    0 0 20px #00e6e6,
-                    0 0 40px #00e6e6,
-                    0 0 80px #00e6e6;
-            }
-            50% {
-                opacity: 0.8;
-                text-shadow: 
-                    0 0 5px #00e6e6,
-                    0 0 10px #00e6e6,
-                    0 0 20px #00e6e6,
-                    0 0 40px #00e6e6;
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.98); }
         }
 
-        /* 开始按钮样式 */
+        /* 诱饵按钮样式 */
         .start-btn {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background: transparent;
-            color: #00e6e6;
-            border: 2px solid #00e6e6;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00e6e6, #00b3b3);
+            color: #000;
+            border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 10px rgba(0, 230, 230, 0.3);
+            box-shadow: 0 0 20px rgba(0, 230, 230, 0.6);
+            transition: all 0.2s;
+            animation: pulse 1.5s infinite;
         }
 
         .start-btn:hover {
-            background: #00e6e6;
-            color: #000;
-            box-shadow: 0 0 20px #00e6e6;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 230, 0.9);
         }
 
-        .hidden {
-            display: none !important;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 230, 230, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 230, 230, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 230, 230, 0); }
         }
 
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-        }
+        .hidden { display: none !important; }
+        @media (max-width: 768px) { h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
 
-    <!-- 开始按钮 -->
-    <button class="start-btn" id="startBtn">点击开始享受翻墙人生</button>
-
-    <!-- 主要内容区域 -->
+    <!-- 👇👇 诱饵按钮 👇👇👇 -->
+    <button class="start-btn" id="startBtn">立即获取 1000Mbps 永久节点</button>
+    
+    <!-- 👇👇 反转内容 👇👇👇 -->
     <div class="container hidden" id="content">
-        <h1>想啥呢<br>根本就没有免费的节点</h1>
+        <h1>想啥呢？<br>根本就没有免费的节点！</h1>
     </div>
+
     <script>
         const startBtn = document.getElementById('startBtn');
         const content = document.getElementById('content');
-        const bgMusic = document.getElementById('bgMusic');
 
         startBtn.addEventListener('click', () => {
-            // 隐藏按钮，显示文字
+            // 1. 隐藏诱饵，显示真相
             startBtn.classList.add('hidden');
             content.classList.remove('hidden');
-
-            // 尝试播放音乐
-            bgMusic.play().catch(err => {
-                console.log("自动播放被拦截，请检查浏览器设置", err);
-            });
+            
+            // 2. 修改网页标题为嘲讽模式（双重打击）
+            document.title = "被骗了吧？根本没有免费节点！";
         });
     </script>
 </body>
