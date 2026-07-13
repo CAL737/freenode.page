@@ -112,22 +112,28 @@
     <button class="home-btn" id="homeBtn">🏠 回家的路</button>
 
     <script>
-        const startBtn = document.getElementById('startBtn');
-        const content = document.getElementById('content');
-        const homeBtn = document.getElementById('homeBtn');
+    const startBtn = document.getElementById('startBtn');
+    const content = document.getElementById('content');
+    const homeBtn = document.getElementById('homeBtn');
 
-        // 诱饵按钮点击事件
-        startBtn.addEventListener('click', () => {
-            startBtn.classList.add('hidden');
-            content.classList.remove('hidden');
-            document.title = "你被骗了！(～￣▽￣)～";
-        });
+    // 诱饵按钮点击事件
+    startBtn.addEventListener('click', () => {
+        startBtn.classList.add('hidden');
+        content.classList.remove('hidden');
+        document.title = "你被骗了！(～￣▽￣)～";
+    });
 
-        // 👇 回家的路跳转逻辑 👇
-        homeBtn.addEventListener('click', () => {
-            // ⚠️ 请将下面的链接替换为你实际想要跳转的地址
-            window.location.href = 'https://gh-proxy.com/';
-        });
-    </script>
+    // 👇 回家的路：跳转到同目录下的另一个HTML 👇
+    homeBtn.addEventListener('click', () => {
+        // ✅ 同级目录：直接写文件名
+        window.location.href = 'page1.html';
+        
+        // 📁 如果在子文件夹里（如 pages/home.html）：
+        // window.location.href = 'pages/home.html';
+        
+        // ⬆️ 如果在上一级目录：
+        // window.location.href = '../home.html';
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回家的路</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #050505;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        video {
+            max-width: 100%;
+            max-height: 100vh;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!--
+      autoplay: 自动播放
+      muted: 静音（⚠️ 浏览器强制要求，不加则无法自动播放）
+      playsinline: 移动端内联播放，防止自动全屏
+      loop: 循环播放
+      controls: 保留控件方便手动操作
+    -->
+    <video id="autoVideo" autoplay muted playsinline loop controls>
+        <source src="https://gh-proxy.com/https://raw.githubusercontent.com/CAL737/freenode.page/main/wayhome.mp4" type="video/mp4">
+        你的浏览器不支持视频播放
+    </video>
+
+    <script>
+        // 兜底：部分浏览器即使 muted 也可能阻止自动播放
+        // 用户首次点击屏幕后恢复声音并继续播放
+        const video = document.getElementById('autoVideo');
+        video.play().catch(() => {
+            const resume = () => {
+                video.muted = false;
+                video.play();
+                document.removeEventListener('click', resume);
+                document.removeEventListener('touchstart', resume);
+            };
+            document.addEventListener('click', resume);
+            document.addEventListener('touchstart', resume);
+        });
+    </script>
+</body>
+</html>
